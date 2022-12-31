@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body dir="rtl">
+    <!--Add student Section-->
+    <div class="contanire">
+        <div class="main-contanier">
+            <form action="/" method="dialog" name="formAdd">
+                <table class="add-section-table">
+                    <tr>
+                        <td colspan="2">
+                            <h1 class="headSection">إضافة طالب</h1>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="right-add-section">
+                            <label class="titleLine" >اسم المستخدم : </label>
+                        </td>
+                        <td>
+                            <input lang="ُEn" required class="inputData" type="text" name="userId" placeholder="Homam_190260">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-userId"> 
+                            
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine" >اسم الطالب : </label>
+                        </td>
+                        <td>
+                            <input required class="inputData" name="userName" type="text" placeholder="همام بكيره">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-userName"> 
+                            
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine">تاريخ الولادة : </label>
+                        </td>
+                        <td>
+                            <input required value="2022-12-01" class="inputData" type="date" min="1900-01-01" max="2022-12-01" name="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="mm/dd/yyyy">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-date"> 
+                            
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine">البرنامج : </label>
+                        </td>
+                        <td>
+                            <select required class="selectProgram" name="program" onclick="selectProgram(this.value)">
+                                <option value="">أختر البرنامج</option>
+                                <option value="BAIT">BAIT</option>
+                                <option value="BACT">BACT</option>
+                                <option value="BIS">BIS</option>
+                                <option value="BIT">BIT</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-program"> 
+                            
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine"> الموبايل : </label>
+                        </td>
+                        <td>
+                            <input dir="ltr" required class="inputData" type="text" name="number" placeholder="+963-988000000">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-number"> 
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div id="Captcha"></div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine">يرجى ادخال رمز التحقق  : </label>
+                        </td>
+                        <td>
+                            <input placeholder="يرجى إدخال رمز كابتشا" id="inPutCaptcha" class="inputData" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="msg-error-captcha"> 
+                            
+                        </td>
+                    </tr>
+                    <tr class="row row-add-button">
+                        <td colspan="2">
+                            <button class="add-student" type="submit" onclick="Getdata(formAdd.userId.value,formAdd.userName.value,formAdd.date.value,formAdd.number.value)">إضافة</button>
+                        </td>
+                    </tr>
+                </form>
+                    
+                <!-- Student Table Section -->
+                    <table width="100%">
+                    <tr>
+                        <td colspan="2">
+                            <h1 class="headSection">جدول باسماء الطلاب</h1> 
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td class="right-add-section">
+                            <label class="titleLine">البرنامج : </label>
+                        </td>
+                        <td>
+                            <select class="select-program-filter" id="sortOfProgram" name="program">
+                                <option value="ALL">جميع البرامج</option>
+                                <option value="BAIT">BAIT</option>
+                                <option value="BACT">BACT</option>
+                                <option value="BIS">BIS</option>
+                                <option value="BIT">BIT</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <label class="titleLine" >فرز حسب : </label>
+                        </td>
+                        <td>
+                            <div class="btn-radio-sort">
+                                <input class="first-radio" name="n" type="radio" onclick="filterByProgram()">البرنامج</input>
+                                <input name="n" type="radio" onclick="SortUserName()">اسم الطالب </input>
+                                <input name="n" type="radio" onclick="sortUserId();">رقم المستخدم </input>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div id="studentTable">
+
+                </div>
+                <button class="ConvertJSON" type="button" onclick="CreateTextArea()">Convert to JSON</button>
+                <div id="text-area">
+                </div>
+        </div>
+    </div>
+<script src="Script.js"></script>
+</body>
+</html>
